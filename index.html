@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Game Cinta Buat Sayangku Devy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Comic Sans MS", sans-serif;
+        background: url("sapi.jpeg") no-repeat center center fixed;
+        background-size: cover;
+        overflow-x: hidden;
+        text-align: center;
+      }
+
+      .container {
+        padding: 100px 20px 60px;
+      }
+
+      .card {
+        background: #fff8f0;
+        padding: 30px 20px;
+        border-radius: 20px;
+        display: inline-block;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 90%;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 2;
+      }
+
+      h1 {
+        color: #e86f51;
+        font-size: 1.8rem;
+      }
+
+      input,
+      select,
+      textarea {
+        padding: 10px;
+        width: 100%;
+        margin-top: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        box-sizing: border-box;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 12px 25px;
+        font-size: 16px;
+        background: #e86f51;
+        border: none;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      button:hover {
+        background: #d55642;
+      }
+
+      .sapi {
+        position: absolute;
+        width: 80px;
+        top: 10px;
+        left: -100px;
+        animation: gerakSapi 12s linear infinite;
+      }
+
+      @keyframes gerakSapi {
+        0% {
+          left: -120px;
+          top: 10px;
+        }
+        100% {
+          left: 110%;
+          top: 10px;
+        }
+      }
+
+      .result {
+        margin-top: 15px;
+        font-weight: bold;
+        color: #555;
+      }
+
+      #level2,
+      #level3,
+      #finalMessage {
+        display: none;
+      }
+
+      @media (max-width: 480px) {
+        .card {
+          padding: 20px 15px;
+        }
+        h1 {
+          font-size: 1.5rem;
+        }
+        .sapi {
+          width: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img src="sapi2.png" class="sapi" alt="sapi animasi" />
+
+    <!-- OPENING -->
+    <div class="container" id="opening">
+      <div class="card">
+        <h1>Assalamualaikum, Hai Sayangku Cantikku 🐄💖</h1>
+        <p>
+          Selamat pagi, gimana tidurnya? nyeyakkan? aku semalem bikin ini buat
+          kamu🥹, Aku izin menghibur kamu yaaa, sebelum itu aku minta tolong kamu
+          ngisi pertanyaan - pertanyaan di bawah ini yaaaa sayang, gampang kok
+          nggk sulit, aku harap kamu bisa maafin aku ya setelah ini, aku sayang
+          banget sama kamu devyku cantikku💕🥰❤️.
+        </p>
+        <button onclick="startGame()">Kita Mulai Ya</button>
+      </div>
+    </div>
+
+    <script>
+      function startGame() {
+        document.getElementById("opening").style.display = "none";
+        document.getElementById("level1").style.display = "block";
+      }
+    </script>
+
+    <!-- LEVEL 1 -->
+
+    <div class="container" id="level1">
+      <div class="card">
+        <h1>Level 1: Tebak Tentang Kita 💘</h1>
+        <input id="q1" placeholder="Tanggal jadian kita?" />
+        <input id="q2" placeholder="Makanan yang sering kita beli?" />
+        <input id="q3" placeholder="Lagu Yang sering kita nyanyiin?" />
+        <input id="q4" placeholder="impian kita?" />
+        <button onclick="checkLevel1()">Lanjut ke Level 2</button>
+        <div id="res1" class="result"></div>
+      </div>
+    </div>
+
+    <!-- LEVEL 2 -->
+    <div class="container" id="level2">
+      <div class="card">
+        <h1>Level 2: Tebak Arti Emoji 💌</h1>
+        <p>Apa arti dari ini? 😢💌❤️</p>
+        <input id="emojiAnswer" placeholder="Jawaban kamu..." />
+        <button onclick="checkLevel2()">Lanjut ke Level 3</button>
+        <div id="res2" class="result"></div>
+      </div>
+    </div>
+
+    <!-- LEVEL 3 -->
+    <div class="container" id="level3">
+      <div class="card">
+        <h1>Level 3: Kenangan Tak Terlupakan ✨</h1>
+        <p>
+          Menurut kamu, hal atau kenangan paling mengesankan saat bersamaku itu
+          apa?
+        </p>
+        <textarea
+          id="memory"
+          placeholder="Tulis jawabanmu di sini..."
+          rows="5"></textarea>
+        <button onclick="checkLevel3()">Selesai</button>
+        <div id="res3" class="result"></div>
+      </div>
+    </div>
+
+    <!-- FINAL MESSAGE -->
+    <div class="container" id="finalMessage">
+      <div class="card">
+        <h1>Sayang maafin aku yaaaaa 🥺❤️</h1>
+        <p>
+          Maaf ya sayang soal omonganku kalo nyakitin perasaan kamu. Aku nggk
+          ada maksud lain sumpah, aku ngomong kayak gitu kemarin niat cuma
+          bercanda sama kamu, tapi ternyata malah nyakitin kamu, maaf ya sayang,
+          aku jadi nyesel ngomong kayak gitu ke kamu, kamu sama sekali nggk
+          ngerepotin aku kok, kamu jangan merasa kalo diri kamu itu sering
+          nyusahin aku yaaaa, kamu itu nggk pernah yang namanya nysahin aku
+          sayang, aku seneng ngelakuinnya buat kamu, kalo pun itu merepotkan,
+          aku juga bakal ngelakuin dengan senang hati ngelakuinya buat kamu, aku
+          itu seneng kalo kamu juga bisa seneng sayang, aku cinta banget sama
+          kamu sayang. jangan tinggalin aku ya sayang, aku bener - bener minta
+          maaf sama kamu😭, aku takut kamu pergi dari aku, aku takut sendirian
+          lagi sayanggg, semenjak kamu deket sama aku, aku seneng bangettt,
+          bersyukur punya kamu🥹. Yang bisa aku kasih buat kamu cuma itu sayang,
+          usaha aku bantuan aku tenaga aku, waktu aku, aku blm bisa ngasi kamu
+          yang terbaik, karna aku sadar, aku bukan orang yang kamu
+          cintai/sayangin lebih dulu. maka dari itu, aku pengen bantuin kamu
+          terus sebisanya aku, aku akan selalu mengusahakan yang terbaik untuk
+          kamu sayang😭🥹 maaafin aku ya karna sudah nyakitin kamu, jangan jauhin
+          aku ya sayang. aku cintaaa banget sama kamu, sayangggg banget sama
+          kamuuuu. ilove you more sayangnku devy alyaningsih❤️❤️ -dari orang
+          yang mencintai kamu Muhammad nurusshobah
+        </p>
+        <a id="whatsappLink" target="_blank">
+          <button>Maafin & Chat Aku 💬</button>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      function checkLevel1() {
+        const q1 = document.getElementById("q1").value.toLowerCase();
+        const q2 = document.getElementById("q2").value.toLowerCase();
+        const q3 = document.getElementById("q3").value.toLowerCase();
+        const q4 = document.getElementById("q4").value.toLowerCase();
+
+        if (
+          q1 === "16" &&
+          q2 === "gacoan" &&
+          q3 === "kita usahakan rumah itu" &&
+          q4 === "bisa serumah"
+        ) {
+          document.getElementById("level1").style.display = "none";
+          document.getElementById("level2").style.display = "block";
+        } else {
+          document.getElementById("res1").textContent =
+            "Masih ada yang salah sayang 😢";
+        }
+      }
+
+      function checkLevel2() {
+        const ans = document.getElementById("emojiAnswer").value.toLowerCase();
+        if (ans.includes("maaf") || ans.includes("minta maaf")) {
+          document.getElementById("level2").style.display = "none";
+          document.getElementById("level3").style.display = "block";
+        } else {
+          document.getElementById("res2").textContent =
+            "Hmm... coba pikir lagi ya sayang 🥺";
+        }
+      }
+
+      function checkLevel3() {
+        const memory = document.getElementById("memory").value.trim();
+        if (memory.length < 5) {
+          document.getElementById("res3").textContent =
+            "Tulis dulu kenangan kita ya sayang 😢";
+          return;
+        }
+
+        const pesan = encodeURIComponent(
+          "Aku udah maafin kamu ya ❤️\n\n" +
+            "✨ Kenangan paling mengesankan saat bersamamu:\n" +
+            memory
+        );
+
+        const nomorWA = "6282323827814";
+        const link = `https://wa.me/${nomorWA}?text=${pesan}`;
+
+        document.getElementById("level3").style.display = "none";
+        document.getElementById("finalMessage").style.display = "block";
+        document.getElementById("whatsappLink").href = link;
+      }
+    </script>
+  </body>
+</html>
