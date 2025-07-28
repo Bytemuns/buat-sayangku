@@ -8,10 +8,17 @@
       body {
         margin: 0;
         font-family: "Comic Sans MS", sans-serif;
-        background: url("sapi.jpeg") no-repeat center center fixed;
-        background-size: cover;
+        background: url("sapi.jpeg") center center / cover no-repeat fixed;
         overflow-x: hidden;
         text-align: center;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          background-position: top center;
+          background-size: contain;
+          background-attachment: scroll;
+        }
       }
 
       .container {
